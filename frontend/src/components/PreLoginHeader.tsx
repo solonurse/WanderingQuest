@@ -1,5 +1,8 @@
-import Link from 'next/link';
+import Link from "next/link";
 import Image from "next/image";
+import Modal from "./Modal";
+import SignUp from "./SignUp";
+import Login from "./Login";
 
 const PreLoginHeader = () => {
   return (
@@ -18,14 +21,14 @@ const PreLoginHeader = () => {
             </Link>
           </li>
           <li>
-            <Link href="/">
-              Sign Up
-            </Link>
+            <Modal buttonLabel="SignUp">
+              <SignUp />
+            </Modal>
           </li>
           <li>
-            <Link href="/">
-              Login
-            </Link>
+            <Modal buttonLabel="Login">
+              <Login />
+            </Modal>
           </li>
         </ul>
       </nav>
