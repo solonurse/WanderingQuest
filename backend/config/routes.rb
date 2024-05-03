@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  post 'auth/:provider/callback', to: 'api/v1/users#create'
 end

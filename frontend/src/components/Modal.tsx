@@ -12,7 +12,7 @@ const Modal = ({ children, buttonLabel } : { children: ReactNode, buttonLabel: s
 
   return (
     <>
-      <button onClick={toggleModal}>
+      <button onClick={toggleModal} className="hover:font-extrabold">
         {buttonLabel}
       </button>
       {isOpen && (

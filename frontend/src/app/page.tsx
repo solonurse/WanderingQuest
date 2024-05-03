@@ -25,7 +25,7 @@ export default function Home() {
           <h3 className="text-xl">マイページでは、自分がクリアしたミッションを確認できます！</h3>
         </div>
       </div>
-      <Link href="/" className="border rounded-lg p-3 mt-6 bg-green-300">
+      <Link href="/" className="border rounded-lg p-3 mt-6 bg-green-300 hover:animate-heartbeat">
           ウォーキングを始めよう！
       </Link>
     </main>
