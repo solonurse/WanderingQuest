@@ -1,6 +1,7 @@
 services:
   db:
     image: postgres
+    platform: linux/amd64
     volumes:
       - postgres_data:/var/lib/postgresql/data
     environment:
@@ -27,6 +28,7 @@ services:
     build:
       context: ./frontend/
       dockerfile: Dockerfile
+    platform: linux/amd64
     volumes:
       - ./frontend:/frontend
     command: "yarn dev"

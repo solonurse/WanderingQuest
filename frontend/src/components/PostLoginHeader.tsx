@@ -1,29 +1,29 @@
-import Link from 'next/link';
+import React from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import Modal from "./Modal";
+import Profile from "./Profile";
 
 const PostLoginHeader = () => {
+  const { data: session, status } = useSession();
+  if (status === 'authenticated') {
   return (
-    <header className="border-b flex items-center p-2 justify-between bg-lime-500 text-white">
-      <h1>
-        <Link href="/" className="whitespace-pre-wrap font-extrabold">
-          {`Wandering\nQuest`}
-        </Link>
-      </h1>
-      <nav>
-        <ul className="flex gap-4">
-          <li>
-            <Link href="/" className="whitespace-pre-wrap">
-              ユーザー名
-            </Link>
-          </li>
-          <li>
-            <Link href="/" className="whitespace-pre-wrap">
-              Logout
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    </header>
+    <div>
+      <ul className="flex gap-4">
+        <li>
+          <Modal buttonLabel={session.user?.name ?? "ログインユーザー"}>
+            <Profile />
+          </Modal>
+        </li>
+        <li>
+          <button onClick={() => signOut()} className="hover:font-extrabold">
+            Logout
+          </button>
+        </li>
+      </ul>
+    </div>
   );
+  }
+  return null;
 };
 
 export default PostLoginHeader;
