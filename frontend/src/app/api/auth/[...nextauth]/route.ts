@@ -44,7 +44,7 @@ const handler = NextAuth({
 					}
 				);
 				
-				if (response.status === 200) {
+				if (response.status === 200) {					
 					return true;
 				} else {
 					return false;
