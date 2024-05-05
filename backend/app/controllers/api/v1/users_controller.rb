@@ -12,6 +12,17 @@ module Api
       rescue StandardError => e
         render json: { error: e.message }, status: :internal_server_error
       end
+
+      def destroy
+        user = User.find_by("email like ?", "#{params[:email]}%")
+        if user
+          user.delete
+        else
+          render json: { error: "ユーザーが見つかりませんでした" }, status: :not_found
+        end
+      rescue StandardError => e
+        render json: { error: e.message }, status: :internal_server_error
+      end
     end
   end
 end

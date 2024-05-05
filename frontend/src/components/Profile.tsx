@@ -1,6 +1,10 @@
+import DeleteUser from './DeleteUser'
+
 const Profile = () => {
   return (
-    <div></div>
+    <div>
+      <DeleteUser />
+    </div>
   )
 }
 
