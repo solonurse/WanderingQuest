@@ -9,13 +9,13 @@ const DeleteUser = () => {
 
   const handleDeleteUser = async () => {
     if (!session || !session.user) {
-      alert('セッションが存在しません');
-      return
+      alert('アカウント削除に失敗しました');
+      return;
     }
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/users/${session.user.email}`
+        `${apiUrl}/users/${session.user.email}`
       )
 
       if (response.status === 204) {
@@ -28,11 +28,19 @@ const DeleteUser = () => {
     }
   }
 
+  const deleteConfirm = async () => {
+    const res = confirm('本当にアカウントを削除しますか？');
+    if (res === true) {
+      handleDeleteUser();
+    } else {
+      return;
+    }
+  }
+
   if (session) {
-    console.log(session.user);
     return (
       <div>
-        <button className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow' onClick={() => handleDeleteUser()}>アカウントを削除する</button>
+        <button className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow' onClick={() => deleteConfirm()}>アカウントを削除する</button>
       </div>
     )
   }

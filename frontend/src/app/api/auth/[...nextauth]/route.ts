@@ -3,7 +3,7 @@ import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from "next-auth/providers/github";
 import axios from 'axios';
 
-const apiUrl = process.env.NEXT_PUBLIC_API_URL
+const apiUrl = process.env.NEXT_AUTH_URL
 
 interface User {
 	id?: string;
@@ -50,7 +50,6 @@ const handler = NextAuth({
 					return false;
 				}
 			} catch (error) {
-				console.log('エラー', error);
 				return false;
 			}
 		},
