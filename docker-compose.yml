@@ -17,7 +17,7 @@ services:
     volumes:
       - ./backend:/backend
     environment:
-      RAILS_ENV: development
+      - EDITOR=vim
     ports:
       - "3001:3000"
     depends_on:
