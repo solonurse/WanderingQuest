@@ -7,7 +7,7 @@ import PreLoginHeader from './PreLoginHeader'
 import PostLoginHeader from './PostLoginHeader';
 
 const Headers = () => {
-  const { data: session, status } = useSession();
+  const { status } = useSession();
 
   return (
     <header className="border-b flex items-center p-2 justify-between bg-lime-500 text-white">

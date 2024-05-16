@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
 
   post 'auth/:provider/callback', to: 'api/v1/users#create'
+  get 'users/:email', to: 'api/v1/users#show'
   delete 'users/:email', to: 'api/v1/users#destroy'
+  post '/avatars/:id', to: 'api/v1/avatars#update'
 end
