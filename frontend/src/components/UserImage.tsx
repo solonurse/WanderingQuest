@@ -1,36 +1,58 @@
+import { useState, useContext } from "react";
 import axios from "axios";
-import { useState } from "react";
+import Image, { ImageLoaderProps } from "next/image";
+import { userContext } from "@/context/UserContext";
 
-const UserImage = () => {
-  const [image, setImage] = useState("");
+const UserImage= () => {
+  const user = useContext(userContext);
+  const userAvatarURL = ({ src, width, quality }: ImageLoaderProps)  => {
+    return `${src}?w=${width}&q=${quality || 75}`
+  };
+  const [newAvatar, setNewAvatar] = useState<File | null>(null);
+  const [prev, setPrev] = useState<string | null>(user?.avatar.url ?? null);
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
     const formData = new FormData();
-    formData.append("files", image);
-    formData.append("refId", userId); //Rails側でpostとeyecatchを紐づけるため
-    formData.append("field", "image");
+    formData.append("user[avatar]", newAvatar || "");
 
-    const res = await axios.post(`http://localhost:3000/api/v1/userimage/`, {
-      data: formData,
-    });
+    const config = {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    };
 
-    if (res.ok) {
-      alert("Image uploaded");
-    }
-  }
+    const response = await axios.post(`${apiUrl}/avatars/${user?.id}`,
+                                        formData,
+                                        config);
 
-  const handleFileChange = (e) => {
-    setImage(e.target.files[0]);
+    if (response.status === 200) {
+      alert("アイコンを更新しました");
+    };
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = e.target.files?.[0];
+    if (selectedFile) {
+      const fileUrl = URL.createObjectURL(selectedFile);
+      setNewAvatar(selectedFile)
+      setPrev(fileUrl);
+    };
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="file" onChange={handleFileChange} />
-      <input type="submit" className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow' value="Upload" />
-    </form>
-  )
-}
+    <div>
+      {prev ?
+        <Image loader={userAvatarURL} src={prev} alt="プレビュー画像" width={200} height={200} className="rounded-full mx-auto p-2" /> :
+        <Image src="/user_icon.png" alt="デフォルト画像" width={200} height={200} className="rounded-full mx-auto bg-white p-2" />
+      };
+      <form onSubmit={handleSubmit}>
+        <input type="file" onChange={handleFileChange} />
+        <input type="submit" className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow' value="Upload" />
+      </form>
+    </div>
+  );
+};
 
 export default UserImage;

@@ -4,6 +4,7 @@ import "./globals.css";
 import Headers from "@/components/Header";
 import Footer from "@/components/Footer";
 import NextAuthProvider from '@/providers/NextAuth';
+import { UserContextProvider } from "@/context/UserContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,13 +20,15 @@ export default function RootLayout({
 }) {
   return (
     <NextAuthProvider>
-      <html lang="ja">
-        <body className="flex flex-col min-h-screen">
-          <Headers />
-          {children}
-          <Footer />
-        </body>
-      </html>
+      <UserContextProvider>
+        <html lang="ja">
+          <body className="flex flex-col min-h-screen">
+            <Headers />
+            {children}
+            <Footer />
+          </body>
+        </html>
+      </UserContextProvider>
     </NextAuthProvider>
   );
 }

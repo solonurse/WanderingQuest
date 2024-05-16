@@ -3,7 +3,7 @@ import { useSession, signOut } from 'next-auth/react'
 import axios from 'axios'
 
 const DeleteUser = () => {
-  const { data: session } = useSession()
+  const { data: session } = useSession();
 
   const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
