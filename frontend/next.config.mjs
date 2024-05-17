@@ -9,7 +9,7 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "s3.ap-northeast-1.amazonaws.com",
+        hostname: "wanderingquest.s3.ap-northeast-1.amazonaws.com",
       },
     ],
   },
