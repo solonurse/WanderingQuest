@@ -3,7 +3,7 @@ import UserImage from './UserImage'
 
 const Profile = () => {
   return (
-    <div className='bg-lime-300'>
+    <div className='bg-lime-300 py-4'>
       <UserImage />
       <DeleteUser />
     </div>
