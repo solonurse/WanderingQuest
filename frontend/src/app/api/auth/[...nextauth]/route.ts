@@ -2,6 +2,7 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from "next-auth/providers/github";
 import axios from 'axios';
+import { getSession } from 'next-auth/react';
 
 const apiUrl = process.env.NEXT_AUTH_URL
 
@@ -44,12 +45,13 @@ const handler = NextAuth({
 					}
 				);
 				
-				if (response.status === 200) {					
+				if (response.status === 200) {	
 					return true;
 				} else {
 					return false;
 				}
 			} catch (error) {
+				alert('ログインに失敗しました。')
 				return false;
 			}
 		},

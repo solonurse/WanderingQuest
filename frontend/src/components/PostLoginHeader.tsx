@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useSession, signOut } from 'next-auth/react';
 import Image, { ImageLoaderProps } from "next/image";
+import Link from "next/link";
 import Modal from "./Modal";
 import Profile from "./Profile";
 import { userContext } from "@/context/UserContext";
@@ -26,6 +27,11 @@ const PostLoginHeader = () => {
             <Modal buttonLabel={user?.name ?? "ログインユーザー"}>
               <Profile />
             </Modal>
+          </li>
+          <li className='my-2'>
+            <Link href={`mypage/${user?.id}`}>
+              マイページ
+            </Link>
           </li>
           <li className='my-2'>
             <button onClick={() => signOut()} className="hover:font-extrabold">
