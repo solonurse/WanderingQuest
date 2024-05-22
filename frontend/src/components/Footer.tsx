@@ -7,17 +7,17 @@ const Footer = () => {
       <nav>
         <ul className="flex justify-center gap-8">
           <li>
-            <Link href="Regulation/Term" className="whitespace-pre-wrap">
+            <Link href="regulation/term" className="whitespace-pre-wrap">
               利用規約
             </Link>
           </li>
           <li>
-            <Link href="/Regulation/PrivacyPolicy" className="whitespace-pre-wrap">
+            <Link href="/regulation/privacy" className="whitespace-pre-wrap">
               プライバシーポリシー
             </Link>
           </li>
           <li>
-            <Link href="/Contact" className="whitespace-pre-wrap">
+            <Link href="/contact" className="whitespace-pre-wrap">
               お問い合わせ
             </Link>
           </li>

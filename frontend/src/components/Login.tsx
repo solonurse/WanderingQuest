@@ -16,13 +16,13 @@ const Login = () => {
       <div className="bg-lime-300 mb-8 p-10">
         <h1 className="text-4xl text-center mb-6">ユーザー登録</h1>
         <div className="mb-3">
-          <button className='w-56 flex items-center gap-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow' onClick={() => signIn('google', {}, { prompt: 'login' })}>
+          <button className='w-56 flex items-center gap-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow' onClick={() => signIn('google', {callbackUrl: '/mypage'}, { prompt: 'login' })}>
           <Image src="/google_logo.svg" alt="ロゴ画像" width={24} height={24} />
             Google でログイン
           </button>
         </div>
         <div>
-          <button className='w-56 flex items-center gap-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow' onClick={() => signIn('github', {}, { prompt: 'login' })}>
+          <button className='w-56 flex items-center gap-1 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow' onClick={() => signIn('github', {callbackUrl: '/mypage'}, { prompt: 'login' })}>
           <Image src="/github_logo.svg" alt="ロゴ画像" width={24} height={24} />
             <p>Githubでログイン</p>
           </button>
