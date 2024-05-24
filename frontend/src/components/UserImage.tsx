@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 import axios from "axios";
 import Image, { ImageLoaderProps } from "next/image";
 import { userContext } from "@/context/UserContext";
+import { toast } from "react-toastify";
 
 const UserImage= () => {
   const user = useContext(userContext);
@@ -28,7 +29,7 @@ const UserImage= () => {
                                         config);
 
     if (response.status === 200) {
-      alert("アイコンを更新しました");
+      toast.success("アイコンを更新しました");
     };
   };
 
