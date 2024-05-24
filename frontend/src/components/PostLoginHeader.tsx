@@ -6,11 +6,21 @@ import Modal from "./Modal";
 import Profile from "./Profile";
 import { userContext } from "@/context/UserContext";
 
-const PostLoginHeader = () => {
+interface PostLoginHeaderProps {
+  setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
   const { status } = useSession();
   const user = useContext(userContext);
   const userAvatarURL = ({ src, width, quality }: ImageLoaderProps)  => {
     return `${src}?w=${width}&q=${quality || 75}`
+  };
+  const handleSignOut = () => {
+    setIsLoggedOut(true);
+    setTimeout(() => {
+      signOut();
+    }, 1000)
   };
 
   if (status === 'authenticated') {
@@ -34,8 +44,8 @@ const PostLoginHeader = () => {
             </Link>
           </li>
           <li className='my-2'>
-            <button onClick={() => signOut()} className="hover:font-extrabold">
-              Logout
+            <button onClick={handleSignOut} className="hover:font-extrabold">
+              ログアウト
             </button>
           </li>
         </ul>
