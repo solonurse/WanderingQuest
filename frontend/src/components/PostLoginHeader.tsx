@@ -20,7 +20,7 @@ const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
     setIsLoggedOut(true);
     setTimeout(() => {
       signOut();
-    }, 1000)
+    }, 1500)
   };
 
   if (status === 'authenticated') {
@@ -39,7 +39,7 @@ const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
             </Modal>
           </li>
           <li className='my-2'>
-            <Link href={`mypage/${user?.id}`}>
+            <Link href={`/mypage/${user?.id}`}>
               マイページ
             </Link>
           </li>

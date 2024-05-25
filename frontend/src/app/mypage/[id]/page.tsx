@@ -12,23 +12,42 @@ const Mypage = () => {
   const pathname = usePathname();
 
   useEffect(() => {
-    if (status === "unauthenticated" || (status === "authenticated" && pathname !== `/mypage/${user?.id}`)) {
-      router.push('/');
+    // status が "loading" の場合や user が null の場合はリダイレクトしない
+    if (status !== "loading" && user !== null) {
+      if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}`) {
+        router.push('/');
+      }
     }
-  }, [status, pathname]);
+  }, [status, pathname, user]);
 
     if (status === "loading") {
     return <p>Loading...</p>;
   }
 
     // リダイレクト条件を満たしている場合、nullを返して何もレンダリングしない
-  if (status === "unauthenticated" || (status === "authenticated" && pathname !== `/mypage/${user?.id}`)) {
+  if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}`) {
     return null;
   }
 
-  if (status === "authenticated" && pathname !== `/mypage/${user?.id}`) {
+  if (status === "authenticated" && pathname === `/mypage/${user?.id}`) {
     return (
-      <div>マイページ</div>
+      <div className="grid grid-cols-2 h-screen">
+        <div className="bg-green-100">
+          <div>カレンダー</div>
+          <div>ウォーキング開始</div>
+          <div>挑戦中のミッション</div>
+        </div>
+        <div className="bg-blue-100">
+          <div>ミッション一覧</div>
+          <div>ミッション内容</div>
+          <div>ミッション内容</div>
+          <div>ミッション内容</div>
+          <div>ミッション内容</div>
+          <div>ミッション内容</div>
+          <div>ミッション内容</div>
+        </div>
+      </div>
+
     )
   }
 

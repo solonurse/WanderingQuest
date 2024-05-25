@@ -12,6 +12,7 @@ const UserImage= () => {
   const [newAvatar, setNewAvatar] = useState<File | null>(null);
   const [prev, setPrev] = useState<string | null>(user?.avatar.url ?? null);
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
