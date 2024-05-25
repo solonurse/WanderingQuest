@@ -24,7 +24,7 @@ const Headers = () => {
 
   useEffect(() => {
     if (isLoggedOut) {
-      toast.success('ログアウトしました');
+      toast.info('ログアウトしています・・・', {autoClose: 1500});
       setIsLoggedOut(false);
     }
   }, [isLoggedOut]);
