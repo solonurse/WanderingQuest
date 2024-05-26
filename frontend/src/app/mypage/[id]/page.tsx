@@ -4,6 +4,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { useSession } from "next-auth/react";
 import React, { useContext, useEffect } from "react";
 import { userContext } from "@/context/UserContext";
+import Calendar from './components/Calendar';
 
 const Mypage = () => {
   const { status } = useSession();
@@ -31,13 +32,16 @@ const Mypage = () => {
 
   if (status === "authenticated" && pathname === `/mypage/${user?.id}`) {
     return (
-      <div className="grid grid-cols-2 h-screen">
-        <div className="bg-green-100">
-          <div>カレンダー</div>
+      <div className="grid md:grid-cols-2 min-h-100">
+        <div className="bg-green-100 place-content-center">
+          <h1 className="text-center">ミッション実施日</h1>
+          <div className="m-5">
+            <Calendar />
+          </div>
           <div>ウォーキング開始</div>
           <div>挑戦中のミッション</div>
         </div>
-        <div className="bg-blue-100">
+        <div className="bg-blue-100 grid place-content-center">
           <div>ミッション一覧</div>
           <div>ミッション内容</div>
           <div>ミッション内容</div>

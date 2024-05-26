@@ -23,7 +23,7 @@ export default function RootLayout({
     <NextAuthProvider>
       <UserContextProvider>
         <html lang="ja">
-          <body className="flex flex-col min-h-screen">
+          <body className="flex flex-col">
             <ToastProvider>
               <Headers />
               {children}
