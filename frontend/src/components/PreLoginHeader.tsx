@@ -9,7 +9,7 @@ const PreLoginHeader = () => {
     <div>
       <ul className="flex gap-4 me-3">
         <li>
-          <Link href="/" className="hover:font-extrabold">
+          <Link href="/mission/createMission" className="hover:font-extrabold">
             お試し
           </Link>
         </li>
