@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
@@ -26,8 +25,10 @@ const CreateMission = () => {
   const router = useRouter();
 
   const onSubmit = (data: MissionForm) => {
-    localStorage.setItem("missionData", JSON.stringify(data));
-    router.push("/mission/playingMission");
+    if (typeof window !== "undefined") {
+      localStorage.setItem("missionData", JSON.stringify(data));
+      router.push("/mission/playingMission");
+    }
   };
 
   return (
