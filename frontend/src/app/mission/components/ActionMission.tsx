@@ -1,3 +1,5 @@
+"use client";
+
 import ActionOptions from "@/constants/ActionOptions";
 import { useFormContext } from "react-hook-form";
 
