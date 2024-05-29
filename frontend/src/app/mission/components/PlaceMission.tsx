@@ -1,5 +1,3 @@
-"use client";
-
 import PlaceOptions from "@/constants/PlaceOptions";
 import { useFormContext } from "react-hook-form";
 
