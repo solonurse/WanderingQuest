@@ -3,9 +3,11 @@
 import Image from "next/image";
 
 const PlayingMission = () => {
-  const missionDataInLocalStorage = localStorage.getItem("missionData")
-  const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : "";
-  console.log(missionData.location, missionData.action, missionData.timer);
+  if (typeof window !== "undefined") {
+    const missionDataInLocalStorage = localStorage.getItem("missionData")
+    const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : "";
+    console.log(missionData.location, missionData.action, missionData.timer);
+  };
 
   return (
     <div className="grid md:grid-cols-2 bg-yellow-100">
