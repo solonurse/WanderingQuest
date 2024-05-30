@@ -2,18 +2,9 @@ import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from "next-auth/providers/github";
 import axios from 'axios';
+import { User, Account } from '@/types/login'
 
 const apiUrl = process.env.NEXT_AUTH_URL
-
-interface User {
-	id?: string;
-  name?: string | null;
-  email?: string | null;
-}
-
-interface Account {
-	provider?: string;
-}
 
 const handler = NextAuth({
 	providers: [

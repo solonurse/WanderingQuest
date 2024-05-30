@@ -6,15 +6,10 @@ import { useRouter } from "next/navigation";
 import PlaceMission from "../components/PlaceMission";
 import ActionMission from "../components/ActionMission";
 import TimeLimit from "../components/TimeLimit";
-
-interface MissionForm {
-  location: string
-  action: string
-  timer: number
-};
+import { MissionData } from "@/types/mission";
 
 const CreateMission = () => {
-  const methods = useForm<MissionForm>({
+  const methods = useForm<MissionData>({
     defaultValues: {
       location: "",
       action: "",
@@ -24,7 +19,7 @@ const CreateMission = () => {
 
   const router = useRouter();
 
-  const onSubmit = (data: MissionForm) => {
+  const onSubmit = (data: MissionData) => {
     if (typeof window !== "undefined") {
       localStorage.setItem("missionData", JSON.stringify(data));
       router.push("/mission/playingMission");
