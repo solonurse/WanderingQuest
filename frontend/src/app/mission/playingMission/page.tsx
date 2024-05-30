@@ -1,26 +1,35 @@
 "use client"
 
 import Image from "next/image";
+import { useState, useEffect } from "react";
+import Mission from "../components/Mission"
+import { MissionData } from '@/types/mission';
 
 const PlayingMission = () => {
-  if (typeof window !== "undefined") {
-    const missionDataInLocalStorage = localStorage.getItem("missionData")
-    const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : "";
-    console.log(missionData.location, missionData.action, missionData.timer);
-  };
+  const [missionData, setMissionData] = useState<MissionData | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const missionDataInLocalStorage = localStorage.getItem("missionData");
+      const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : null;
+      console.log(missionData.location, missionData.action, missionData.timer);
+      setMissionData(missionData);
+    }
+  }, []);
 
   return (
-    <div className="grid md:grid-cols-2 bg-yellow-100">
-    <div>
-      <Image src="/map.png" alt="マップ画像" width={700} height={600} sizes="100vw" className="h-auto " />
+    <div className="grid md:grid-cols-2 bg-yellow-100 h-auto pb-5">
+      <div className="flex justify-center items-center">
+        <Image src="/search.gif" alt="探索中の画像" width={550} height={550} />
+      </div>
+      {missionData ? (
+        <Mission missionData={missionData} />
+      ) : (
+        <div className="flex justify-center items-center">
+          <h1 className="text-2xl">ミッションデータが見つかりません</h1>
+        </div>
+      )}
     </div>
-    <div className="flex flex-col mx-auto gap-8 text-center my-5 w-3/4">
-      <h1 className="text-2xl">ミッション開始</h1>
-      <form className="w-full">
-
-      </form>
-    </div>
-  </div>
   );
 };
 

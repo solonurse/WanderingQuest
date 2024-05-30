@@ -3,16 +3,7 @@
 import { createContext, ReactNode, useEffect, useState } from 'react';
 import { useSession } from 'next-auth/react';
 import axios from "axios";
-
-interface User {
-  id: number,
-  uid: string,
-  name: string;
-  email: string;
-  avatar: { url: string | null },
-  created_at: Date,
-  updated_at: Date,
-};
+import { User } from "@/types/user"
 
 export const userContext = createContext<User | null>(null);
 

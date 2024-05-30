@@ -5,10 +5,7 @@ import Link from "next/link";
 import Modal from "./Modal";
 import Profile from "./Profile";
 import { userContext } from "@/context/UserContext";
-
-interface PostLoginHeaderProps {
-  setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>;
-}
+import { PostLoginHeaderProps } from "@/types/login";
 
 const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
   const { status } = useSession();
