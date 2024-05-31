@@ -21,7 +21,14 @@ const CreateMission = () => {
 
   const onSubmit = (data: MissionData) => {
     if (typeof window !== "undefined") {
-      localStorage.setItem("missionData", JSON.stringify(data));
+      const startTime = new Date(); // ミッション開始時刻
+
+      const missionDataWithTimestamps = {
+        ...data,
+        startTime: startTime.toISOString(),
+      };
+
+      localStorage.setItem("missionData", JSON.stringify(missionDataWithTimestamps));
       router.push("/mission/playingMission");
     };
   };
