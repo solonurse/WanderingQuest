@@ -12,7 +12,6 @@ const PlayingMission = () => {
     if (typeof window !== "undefined") {
       const missionDataInLocalStorage = localStorage.getItem("missionData");
       const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : null;
-      console.log(missionData.location, missionData.action, missionData.timer);
       setMissionData(missionData);
     }
   }, []);

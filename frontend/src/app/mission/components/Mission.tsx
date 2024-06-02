@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import Link from 'next/link';
 import Image from "next/image";
 import { MissionDataProps } from '@/types/mission';
 
@@ -42,8 +43,8 @@ const Mission = ({ missionData }: MissionDataProps) => {
         <h1 className="text-3xl">制限時間</h1>
         <h1 className={`text-4xl ${timerClass}`}>{formatTime(countTimer)}</h1>
         <div className="flex gap-4 mt-5 ms-1">
-          <button className="text-2xl bg-gradient-to-br from-green-300 to-green-800 hover:bg-gradient-to-tl text-white rounded-lg p-2 shadow-2xl shadow-green-400/50 active:shadow-md transition-shadow duration-200">成功</button>
-          <button className="text-2xl bg-gradient-to-br from-red-300 to-red-800 hover:bg-gradient-to-tl text-white rounded-lg p-2 shadow-2xl shadow-red-400/50 active:shadow-md transition-shadow duration-200">失敗</button>
+          <Link href="/mission/missionCompleted" className="text-2xl bg-gradient-to-br from-green-300 to-green-800 hover:bg-gradient-to-tl text-white rounded-lg p-2 shadow-2xl shadow-green-400/50 active:shadow-md transition-shadow duration-200">成功</Link>
+          <Link href="/mission/missionFailed" className="text-2xl bg-gradient-to-br from-red-300 to-red-800 hover:bg-gradient-to-tl text-white rounded-lg p-2 shadow-2xl shadow-red-400/50 active:shadow-md transition-shadow duration-200">失敗</Link>
         </div>
       </div>
       <div className="flex justify-center items-center mt-3">
