@@ -36,7 +36,7 @@ const CreateMission = () => {
   return (
     <div className="grid md:grid-cols-2 bg-yellow-100">
       <div>
-        <Image src="/map.png" alt="マップ画像" width={700} height={600} sizes="100vw" className="h-auto " />
+        <Image src="/map.png" alt="マップ画像" width={700} height={600} sizes="100vw" className="h-auto" />
       </div>
       <div className="flex flex-col mx-auto gap-8 text-center my-5 w-3/4">
         <h1 className="text-2xl">ミッション作成</h1>
