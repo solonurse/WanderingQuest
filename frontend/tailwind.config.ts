@@ -16,7 +16,7 @@ const config: Config = {
       },
       animation: {
         "slide-in-fwd-center": "slide-in-fwd-center 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940)   both",
-        heartbeat: "heartbeat 1.5s ease  infinite both"
+        heartbeat: "heartbeat 1.5s ease  infinite both",
       },
       keyframes: {
         "slide-in-fwd-center": {
@@ -29,7 +29,7 @@ const config: Config = {
               opacity: "1"
           }
         },
-        heartbeat: {
+        "heartbeat": {
           "0%": {
               transform: "scale(1)",
               "transform-origin": "center center",
@@ -51,7 +51,7 @@ const config: Config = {
               transform: "scale(1)",
               "animation-timing-function": "ease-out"
           }
-        }
+        },
       },
     },
   },

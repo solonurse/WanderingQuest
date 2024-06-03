@@ -15,14 +15,14 @@ const MissionFailed = () => {
     }
   }, []);
   return (
-    <div className="flex flex-col gap-8 items-center bg-cyan-500 py-5">
+    <div className="flex flex-col gap-8 items-center bg-gray-300 pb-5 lg:py-5">
       <Image src="/mission_failed.png" alt="ミッション失敗" width={800} height={800} />
       <h1 className="text-3xl mx-auto font-bold">
         挫折は成功の階段の一部です。次回に向けて再挑戦しましょう！
       </h1>
-      <div className="mx-auto border-2 rounded p-5 w-3/4">
+      <div className="flex flex-col items-center justify-center border border-gray-100 rounded-lg shadow md:flex-row bg-neutral-100 p-5 w-3/4">
         <form action="post" className="flex flex-col gap-5 items-center">
-          <h1 className="text-3xl font-semibold">{`${missionData?.location}で${missionData?.action}ミッションに失敗・・・`}</h1>
+          <h1 className="text-3xl font-semibold underline decoration-double decoration-yellow-300">{`${missionData?.location}で${missionData?.action}ミッションに失敗・・・`}</h1>
           <div className="">
             <label htmlFor="comment" className="text-2xl mb-5">今の気持ちをコメントで残しましょう</label>
             <textarea id="comment" className="w-full" placeholder="コメントを入力" />
