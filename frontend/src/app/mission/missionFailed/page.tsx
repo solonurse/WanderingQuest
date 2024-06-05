@@ -17,7 +17,7 @@ const MissionFailed = () => {
 
   const { register, handleSubmit } = useForm<MissionResult>();
 
-  const onSubmit: SubmitHandler<MissionResult> = async (data, e: React.FormEvent<HTMLFormElement>) => {
+  const onSubmit: SubmitHandler<MissionResult> = async (data, e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     if (e.nativeEvent.submitter?.name === "recordButton") {
