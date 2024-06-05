@@ -17,10 +17,10 @@ const MissionFailed = () => {
 
   const { register, handleSubmit } = useForm<MissionResult>();
 
-  const onSubmit: SubmitHandler<MissionResult> = async (data, e: FormEvent<HTMLFormElement>) => {
+  const onSubmit: SubmitHandler<MissionResult> = async (data, e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (e.nativeEvent.submitter?.name === "recordButton") {
+    if ((e.nativeEvent.submitter as HTMLButtonElement)?.name === "recordButton") {
       // 「記録する」ボタンがクリックされた場合
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       const formData = new FormData();
@@ -49,7 +49,7 @@ const MissionFailed = () => {
       } catch (error) {
         toast.error("記録に失敗しました");
       }
-    } else if (e.nativeEvent.submitter?.name === "notRecordButton") {
+    } else if ((e.nativeEvent.submitter as HTMLButtonElement)?.name === "notRecordButton") {
         // 「記録しない」ボタンがクリックされた場合
         if (typeof window !== "undefined") {
           localStorage.removeItem("missionData");
