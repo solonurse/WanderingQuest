@@ -13,10 +13,10 @@ const PlaceMission = () => {
   return (
     <div className="flex flex-col gap-2 mb-10">
       <label htmlFor="location" className="mb-2 text-xl">どこに行く？</label>
-      <input 
-        type="text" 
-        id="location" 
-        {...register("location", { required: "場所を入力してください。" })} 
+      <input
+        type="text"
+        id="location"
+        {...register("location", { required: "場所を入力してください。" })}
         className="p-2 border border-gray-300 rounded w-full text-center"
         placeholder="場所を入力"
       />

@@ -14,7 +14,7 @@ const UserImage= () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
     const formData = new FormData();
     formData.append("user[avatar]", newAvatar || "");
