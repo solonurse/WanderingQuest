@@ -8,3 +8,8 @@ export interface MissionData {
 export interface MissionDataProps {
   missionData: MissionData;
 };
+
+export interface MissionResult {
+  comment: string;
+  picture: File,
+};

@@ -19,7 +19,7 @@ const PlayingMission = () => {
   return (
     <div className="grid md:grid-cols-2 bg-yellow-100 h-auto pb-5">
       <div className="flex justify-center items-center">
-        <Image src="/search.gif" alt="探索中の画像" width={550} height={550} />
+        <Image src="/search.gif" alt="探索中の画像" width={550} height={550} unoptimized />
       </div>
       {missionData ? (
         <Mission missionData={missionData} />

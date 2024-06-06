@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   get 'users/:email', to: 'api/v1/users#show'
   delete 'users/:email', to: 'api/v1/users#destroy'
   post '/avatars/:id', to: 'api/v1/avatars#update'
+  post '/mission_records/:id', to: 'api/v1/mission_records#create'
 end
