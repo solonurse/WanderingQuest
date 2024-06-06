@@ -12,5 +12,4 @@ export interface MissionDataProps {
 export interface MissionResult {
   comment: string;
   picture: File,
-  submitter: HTMLElement | null
 };

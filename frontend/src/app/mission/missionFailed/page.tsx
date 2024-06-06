@@ -1,33 +1,33 @@
 "use client"
 
-import React, { useState, useEffect, useContext, FormEvent } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/navigation";
-import { useForm, SubmitHandler } from "react-hook-form";
 import axios from "axios";
 import Image from "next/image";
 import { toast } from "react-toastify";
 import { userContext } from "@/context/UserContext";
-import { MissionData, MissionResult } from '@/types/mission';
+import { MissionData } from '@/types/mission';
 
 const MissionFailed = () => {
   const [missionData, setMissionData] = useState<MissionData | null>(null);
+  const [comment, setComment] = useState("");
   const user = useContext(userContext);
 
   const router = useRouter();
 
-  const { register, handleSubmit } = useForm<MissionResult>();
-
-  const onSubmit: SubmitHandler<MissionResult> = async (data, e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if ((e.nativeEvent.submitter as HTMLButtonElement)?.name === "recordButton") {
+    const submitter = (e.nativeEvent as SubmitEvent).submitter as HTMLButtonElement;
+
+    if (submitter.name === "recordButton") {
       // 「記録する」ボタンがクリックされた場合
       const apiUrl = process.env.NEXT_PUBLIC_API_URL;
       const formData = new FormData();
 
       formData.append("mission", `${missionData?.location}で${missionData?.action}ミッションに失敗・・・`);
-      formData.append("timer", missionData?.timer);
-      formData.append("comment", data.comment);
+      formData.append("timer", `${missionData?.timer}`);
+      formData.append("comment", comment);
       formData.append("result", "失敗");
   
       const config = {
@@ -49,7 +49,7 @@ const MissionFailed = () => {
       } catch (error) {
         toast.error("記録に失敗しました");
       }
-    } else if ((e.nativeEvent.submitter as HTMLButtonElement)?.name === "notRecordButton") {
+    } else if (submitter.name === "notRecordButton") {
         // 「記録しない」ボタンがクリックされた場合
         if (typeof window !== "undefined") {
           localStorage.removeItem("missionData");
@@ -73,13 +73,14 @@ const MissionFailed = () => {
         挫折は成功の階段の一部です。次回に向けて再挑戦しましょう！
       </h1>
       <div className="flex flex-col items-center justify-center border border-gray-100 rounded-lg shadow md:flex-row bg-neutral-100 p-5 w-3/4">
-        <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-5 items-center">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-5 items-center">
           <h1 className="text-3xl font-semibold underline decoration-double decoration-yellow-300">{`${missionData?.location}で${missionData?.action}ミッションに失敗・・・`}</h1>
           <div>
             <label htmlFor="comment" className="text-2xl mb-5">今の気持ちをコメントで残しましょう</label>
             <textarea
               id="comment"
-              {...register("comment")}
+              onChange={(e) => setComment(e.target.value)}
+              value={comment}
               className="w-full"
               placeholder="コメントを入力"
             />
