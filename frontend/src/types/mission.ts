@@ -1,3 +1,6 @@
+import { ChangeEvent } from "react";
+import { ImageLoaderProps } from "next/image";
+
 export interface MissionData {
   location: string;
   action: string;
@@ -9,7 +12,15 @@ export interface MissionDataProps {
   missionData: MissionData;
 };
 
-export interface MissionResult {
+export interface HandleSubmitProps {
+  type: string
+  missionData: MissionData | null;
   comment: string;
-  picture: File,
+  missionPicture: File | null
+};
+
+export interface MissionPicturePreviewProps {
+  prev: string;
+  missionPictureURL: (props: ImageLoaderProps) => string;
+  handleFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };

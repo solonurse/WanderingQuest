@@ -31,14 +31,16 @@ const UserImage= () => {
 
     if (response.status === 200) {
       toast.success("アイコンを更新しました");
-    };
+    } else {
+      toast.error("アイコンの更新に失敗しました");
+    }
   };
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0];
     if (selectedFile) {
       const fileUrl = URL.createObjectURL(selectedFile);
-      setNewAvatar(selectedFile)
+      setNewAvatar(selectedFile);
       setPrev(fileUrl);
     };
   };
