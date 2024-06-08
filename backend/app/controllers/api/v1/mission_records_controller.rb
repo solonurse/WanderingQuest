@@ -1,6 +1,12 @@
 module Api
   module V1
     class MissionRecordsController < ApplicationController
+      def index
+        user = User.find(params[:id])
+        mission_records = user.mission_records
+        render json: mission_records
+      end
+
       def create
         mission_record = MissionRecord.new(mission_record_params)
 

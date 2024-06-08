@@ -10,4 +10,4 @@ export interface Account {
 
 export interface PostLoginHeaderProps {
   setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>;
-}
+};

@@ -6,6 +6,7 @@ import React, { useContext, useEffect } from "react";
 import Link from 'next/link';
 import { userContext } from "@/context/UserContext";
 import Calendar from './components/Calendar';
+import MissionRecord from "./components/MissionRecord";
 
 const Mypage = () => {
   const { status } = useSession();
@@ -48,20 +49,10 @@ const Mypage = () => {
             </Link>
           </div>
         </div>
-        <div className="bg-blue-100 grid place-content-center">
-          <div>ミッション一覧</div>
-          <div>ミッション内容</div>
-          <div>ミッション内容</div>
-          <div>ミッション内容</div>
-          <div>ミッション内容</div>
-          <div>ミッション内容</div>
-          <div>ミッション内容</div>
-        </div>
+        <MissionRecord user_id={user?.id ?? null} />
       </div>
-
-    )
+    );
   }
-
   return null; // 状態が他の場合に対応するためnullを返す
 };
 

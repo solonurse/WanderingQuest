@@ -24,3 +24,14 @@ export interface MissionPicturePreviewProps {
   missionPictureURL: (props: ImageLoaderProps) => string;
   handleFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
+
+export interface UseId {
+  user_id: number | null;
+};
+
+export interface MissionRecordData {
+  id: number;
+  title: string;
+  comment: string;
+  // 他のプロパティ
+}
