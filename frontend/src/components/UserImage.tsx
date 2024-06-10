@@ -50,8 +50,8 @@ const UserImage= () => {
       <div className="text-center text-xl font-medium">プロフィール写真</div>
       <div className="pt-2">
         {prev ?
-          <Image loader={userAvatarURL} src={prev} alt="プレビュー画像" width={100} height={100} className="rounded-full mx-auto p-2" /> :
-          <Image src="/user_icon.png" alt="デフォルト画像" width={100} height={100} className="rounded-full mx-auto bg-white p-2" />
+          <Image loader={userAvatarURL} src={prev} alt="プレビュー画像" width={100} height={100} className="rounded-full mx-auto p-2 w-auto h-auto" /> :
+          <Image src="/user_icon.png" alt="デフォルト画像" width={100} height={100} className="rounded-full mx-auto bg-white p-2 w-auto h-auto" />
         };
       </div>
       <form onSubmit={handleSubmit} className="grid justify-items-center gap-3">

@@ -17,10 +17,23 @@ module Api
         end
       end
 
+      def update
+        mission_record = MissionRecord.find(params[:id]);
+        if mission_record.update(comment_params)
+          head :ok
+        else
+          render json: { errors: mission_record.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
       private
 
       def mission_record_params
         params.permit(:title, :comment, :timer, :mission_picture, :result).merge(user_id: params[:id])
+      end
+
+      def comment_params
+        params.require(:mission_record).permit(:comment)
       end
     end
   end

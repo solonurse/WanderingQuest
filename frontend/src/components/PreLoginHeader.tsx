@@ -14,7 +14,7 @@ const PreLoginHeader = () => {
           </Link>
         </li>
         <li>
-          <Modal buttonLabel="Login">
+          <Modal buttonLabel="Login" buttonClass="">
             <Login />
           </Modal>
         </li>
