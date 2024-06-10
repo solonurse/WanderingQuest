@@ -1,20 +1,15 @@
 "use client"
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Mission from "../components/Mission"
 import { MissionData } from '@/types/mission';
+import useMissionData from "@/hooks/useMissionData";
 
 const PlayingMission = () => {
   const [missionData, setMissionData] = useState<MissionData | null>(null);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const missionDataInLocalStorage = localStorage.getItem("missionData");
-      const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : null;
-      setMissionData(missionData);
-    }
-  }, []);
+  useMissionData(setMissionData);
 
   return (
     <div className="grid md:grid-cols-2 bg-yellow-100 h-auto pb-5">

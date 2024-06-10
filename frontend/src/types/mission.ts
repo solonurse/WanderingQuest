@@ -33,5 +33,11 @@ export interface MissionRecordData {
   id: number;
   title: string;
   comment: string;
-  // 他のプロパティ
-}
+  created_at: string;
+  result: string;
+  mission_picture: { url: string | null }
+};
+
+export interface MissionRecordDataProps {
+  missionRecord: MissionRecordData
+};

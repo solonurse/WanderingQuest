@@ -33,7 +33,7 @@ const Headers = () => {
     <header className="border-b flex items-center p-2 justify-between bg-lime-500 text-white">
       <h1>
         <Link href="/" className="whitespace-pre-wrap font-extrabold flex">
-          <Image src="/logo.png" alt="ロゴ画像" width={50} height={50} />
+          <Image src="/logo.png" alt="ロゴ画像" width={50} height={50} className='w-auto h-auto' priority />
           {`Wandering\nQuest`}
         </Link>
       </h1>

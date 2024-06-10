@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import { type ReactNode } from "react";
 
-const Modal = ({ children, buttonLabel } : { children: ReactNode, buttonLabel: string } ) => {
+const Modal = ({ children, buttonLabel, buttonClass } : { children: ReactNode, buttonLabel: string, buttonClass: string } ) => {
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleModal = () => {
@@ -12,7 +12,7 @@ const Modal = ({ children, buttonLabel } : { children: ReactNode, buttonLabel: s
 
   return (
     <>
-      <button onClick={toggleModal} className="hover:font-extrabold">
+      <button onClick={toggleModal} className={`hover:font-extrabold ${buttonClass}`}>
         {buttonLabel}
       </button>
       {isOpen && (

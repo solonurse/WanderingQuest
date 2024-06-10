@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   post '/avatars/:id', to: 'api/v1/avatars#update'
   get '/mission_records/:id', to: 'api/v1/mission_records#index'
   post '/mission_records/:id', to: 'api/v1/mission_records#create'
+  put '/mission_records/:id', to: 'api/v1/mission_records#update'
 end

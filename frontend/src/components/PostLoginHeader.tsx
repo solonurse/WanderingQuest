@@ -26,17 +26,17 @@ const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
         <ul className="flex gap-3">
           <li className='my-1'>
             {user?.avatar.url ?
-              <Image loader={userAvatarURL} src={user.avatar.url} alt="ユーザーアイコン" width={32} height={32} className="rounded-full mx-auto" /> :
+              <Image loader={userAvatarURL} src={user.avatar.url} alt="ユーザーアイコン" width={56} height={56} className="rounded-full mx-auto" /> :
               <Image src="/user_icon.png" alt="デフォルトユーザーアイコン" width={32} height={32} className="rounded-full mx-auto bg-white p-2" />
             }
           </li>
           <li className='my-2'>
-            <Modal buttonLabel={user?.name ?? "ログインユーザー"}>
+            <Modal buttonLabel={user?.name ?? "ログインユーザー"} buttonClass="">
               <Profile />
             </Modal>
           </li>
           <li className='my-2'>
-            <Link href={`/mypage/${user?.id}`}>
+            <Link href={`/mypage/${user?.id}`} className="hover:font-extrabold">
               マイページ
             </Link>
           </li>
