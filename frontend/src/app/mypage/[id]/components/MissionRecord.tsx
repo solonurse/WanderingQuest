@@ -1,25 +1,7 @@
-import { useState ,useEffect } from "react";
-import axios from "axios";
-import { UseId, MissionRecordData } from "@/types/mission"
 import MissionRecordCard from "./MissionRecordCard";
+import { MissionRecordsProps } from "@/types/mission"
 
-const MissionRecord: React.FC<UseId> = ({user_id}) => {
-  const [missionRecords, setMissionRecords] = useState<MissionRecordData[]>([]);
-
-  useEffect(() => {
-    const missionData =  async () => {
-      try {
-        const apiUrl = process.env.NEXT_PUBLIC_API_URL
-    
-        const response = await axios.get(`${apiUrl}/mission_records/${user_id}`);
-        setMissionRecords(response.data);
-      } catch (error) {
-        return
-      };
-    };
-    missionData();
-  }, [])
-
+const MissionRecord: React.FC<MissionRecordsProps> = ({missionRecords}) => {
     return (
       <div className="flex flex-col items-center">
         <div className="text-3xl mt-5">ミッション記録</div>
@@ -29,8 +11,8 @@ const MissionRecord: React.FC<UseId> = ({user_id}) => {
               <MissionRecordCard key={missionRecord.id} missionRecord={missionRecord} />
             ))
           ) : (
-          <div className=" flex items-center text-3xl h-64">
-            <h1>達成したミッションがありません</h1>
+          <div className=" flex items-center justify-center text-3xl h-64">
+            <h1>ミッション記録がありません</h1>
           </div>
           )}
         </div>

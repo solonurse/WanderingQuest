@@ -1,27 +1,14 @@
 'use client'
 
-import { useRouter, usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
-import React, { useContext, useEffect } from "react";
-import { userContext } from "@/context/UserContext";
 import Calendar from './components/Calendar';
 import WalkingButton from "./components/WalkingButton";
 import MissionRecord from "./components/MissionRecord";
+import useAuthRedirect from "../hooks/useAuthRedirect";
+import useFetchMissionData from "../hooks/useFetchMissionData";
 
 const Mypage = () => {
-  const { status } = useSession();
-  const router = useRouter();
-  const user = useContext(userContext);
-  const pathname = usePathname();
-
-  useEffect(() => {
-    // status が "loading" の場合や user が null の場合はリダイレクトしない
-    if (status !== "loading" && user !== null) {
-      if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}`) {
-        router.push('/');
-      }
-    }
-  }, [status, pathname, user]);
+  const { status, user, pathname } = useAuthRedirect();
+  const missionRecords = useFetchMissionData(user?.id);
 
     if (status === "loading") {
     return <p>Loading...</p>;
@@ -38,11 +25,11 @@ const Mypage = () => {
         <div>
           <h1 className="text-center text-3xl mt-5">ミッション実施日</h1>
           <div className="m-5">
-            <Calendar />
+            <Calendar missionRecords={missionRecords} />
           </div>
           <WalkingButton />
         </div>
-        <MissionRecord user_id={user?.id ?? null} />
+        <MissionRecord missionRecords={missionRecords} />
       </div>
     );
   }

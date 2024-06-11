@@ -17,7 +17,7 @@ const WalkingButton = () => {
       </Link>
       {missionData ? (
         <Link href="/mission/playingMission" className="flex gap-1 bg-purple-500 hover:bg-purple-600 text-white font-bold whitespace-nowrap border p-2 rounded-full shadow-md active:shadow-sm">
-          <Image src="/target.png" alt="歩く人" width={24} height={24} className="w-auto h-auto" />
+          <Image src="/target.png" alt="ターゲット" width={24} height={24} className="w-auto h-auto" />
           挑戦中のミッション
         </Link>
 

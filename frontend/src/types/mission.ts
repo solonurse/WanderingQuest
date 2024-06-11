@@ -25,10 +25,6 @@ export interface MissionPicturePreviewProps {
   handleFileChange: (e: ChangeEvent<HTMLInputElement>) => void;
 };
 
-export interface UseId {
-  user_id: number | null;
-};
-
 export interface MissionRecordData {
   id: number;
   title: string;
@@ -36,6 +32,10 @@ export interface MissionRecordData {
   created_at: string;
   result: string;
   mission_picture: { url: string | null }
+};
+
+export interface MissionRecordsProps {
+  missionRecords: MissionRecordData[];
 };
 
 export interface MissionRecordDataProps {
