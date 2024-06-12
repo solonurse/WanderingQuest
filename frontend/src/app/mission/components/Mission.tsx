@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import Image from "next/image";
 import { MissionDataProps } from '@/types/mission';
@@ -6,6 +7,7 @@ import { MissionDataProps } from '@/types/mission';
 const Mission = ({ missionData }: MissionDataProps) => {
   const secondTime = missionData.timer * 60; // タイマーの初期値を秒単位で設定
   const [countTimer, setCountTimer] = useState(secondTime);
+  const router = useRouter();
 
   useEffect(() => {
     const updateTimer = () => {
@@ -21,8 +23,10 @@ const Mission = ({ missionData }: MissionDataProps) => {
     if (countTimer > 0) {
       const timerId = setInterval(updateTimer, 1000);
       return () => clearInterval(timerId);
+    } else {
+      router.push("/mission/missionFailed");
     }
-  }, []);
+  }, [countTimer]);
 
   // タイマーが5分を切ったらタイマーの色を赤色にする
   const timerClass = countTimer < 300 ? 'text-red-500' : 'text-black';
@@ -32,7 +36,6 @@ const Mission = ({ missionData }: MissionDataProps) => {
     const seconds = time % 60;
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
-
 
   return (
     <div className="relative flex justify-center items-center my-5">
