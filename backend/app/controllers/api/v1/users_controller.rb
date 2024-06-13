@@ -13,7 +13,7 @@ module Api
 
       def create
         # 条件に該当するデータがあればそれを返す。なければ新規作成
-        user = User.find_or_create_by(provider: params[:provider], uid: params[:uid], name: params[:name], email: params[:email])      
+        user = User.find_or_create_by(provider: params[:provider], uid: params[:uid], name: params[:name], email: params[:email], is_guest: is_guest?)      
         if user
           head :ok
         else
@@ -32,6 +32,12 @@ module Api
         end
       rescue StandardError => e
         render json: { error: e.message }, status: :internal_server_error
+      end
+
+      private
+
+      def is_guest?
+        params[:provider] == 'credentials'
       end
     end
   end

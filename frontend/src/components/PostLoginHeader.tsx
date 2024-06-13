@@ -16,8 +16,8 @@ const PostLoginHeader = ({setIsLoggedOut}: PostLoginHeaderProps) => {
   const handleSignOut = () => {
     setIsLoggedOut(true);
     setTimeout(() => {
-      signOut();
-    }, 1500)
+      signOut({ callbackUrl: '/' });
+    }, 1500);
   };
 
   if (status === 'authenticated') {

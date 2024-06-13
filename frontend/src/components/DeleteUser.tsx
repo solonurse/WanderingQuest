@@ -1,6 +1,7 @@
-import React from 'react'
-import { useSession, signOut } from 'next-auth/react'
-import axios from 'axios'
+import React from 'react';
+import { useSession, signOut } from 'next-auth/react';
+import axios from 'axios';
+import { toast } from "react-toastify";
 
 const DeleteUser = () => {
   const { data: session } = useSession();
@@ -9,7 +10,7 @@ const DeleteUser = () => {
 
   const handleDeleteUser = async () => {
     if (!session || !session.user) {
-      alert('アカウント削除に失敗しました');
+      toast.error("アカウント削除に失敗しました");
       return;
     }
 
@@ -19,9 +20,16 @@ const DeleteUser = () => {
       )
 
       if (response.status === 204) {
-        signOut().then(() => alert("アカウントを削除しました。"));
+        if (typeof window !== "undefined") {
+          localStorage.removeItem("guestUser");
+          localStorage.removeItem("missionData");
+        }
+        toast.success('アカウントを削除しました', {autoClose: 1500});
+        setTimeout(() => {
+          signOut({ callbackUrl: '/' });
+        }, 1500);
       } else {
-        alert('アカウント削除に失敗しました');
+        toast.error('アカウント削除に失敗しました');
       }
     } catch (error) {
       return false;
