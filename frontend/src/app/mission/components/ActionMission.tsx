@@ -21,7 +21,7 @@ const ActionMission = () => {
         placeholder="目的を入力"
       />
       {errors.action && <p className="text-red-500">{errors.action.message as string}</p>}
-      <div className="mx-auto mt-5 p-2 bg-blue-500 text-white rounded cursor-pointer w-1/2" onClick={randomActionMission}>
+      <div className="mx-auto mt-5 p-2 bg-blue-500 hover:bg-blue-600 text-white rounded cursor-pointer w-1/2 shadow-md active:shadow-sm" onClick={randomActionMission}>
         目的を生成する
       </div>
     </div>

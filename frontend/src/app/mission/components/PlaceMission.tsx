@@ -21,7 +21,7 @@ const PlaceMission = () => {
         placeholder="場所を入力"
       />
       {errors.location && <p className="text-red-500">{errors.location.message as string}</p>}
-      <div className="mx-auto mt-5 p-2 bg-blue-500 text-white rounded cursor-pointer w-1/2" onClick={randomPlaceMission}>
+      <div className="mx-auto mt-5 p-2 bg-blue-500 hover:bg-blue-600 text-white rounded cursor-pointer w-1/2 shadow-md active:shadow-sm" onClick={randomPlaceMission}>
         場所を生成する
       </div>
     </div>

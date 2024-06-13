@@ -1,6 +1,7 @@
 import NextAuth from 'next-auth';
 import GoogleProvider from 'next-auth/providers/google';
 import GitHubProvider from "next-auth/providers/github";
+import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
 import { User, Account } from '@/types/login'
 
@@ -16,6 +17,31 @@ const handler = NextAuth({
 			clientId: process.env.GITHUB_ID || '',
 			clientSecret: process.env.GITHUB_SECRET || ''
 		}),
+		CredentialsProvider({
+			name: 'ゲストユーザー',
+			credentials: {
+				id: { label: "id", type: "number"},
+        username: { label: "Username", type: "text" },
+        email: { label: "Email", type: "text" }
+      },
+			async authorize(credentials) {
+        if (!credentials) {
+          return null;
+        }
+
+        const user = {
+          id: credentials.id,
+          name: credentials.username,
+          email: credentials.email,
+        };
+
+        if (user) {
+          return user;
+        } else {
+          return null;
+        }
+			},
+		})
 	],
 	secret: process.env.NEXTAUTH_SECRET,
 	callbacks: {
@@ -34,7 +60,7 @@ const handler = NextAuth({
 						email,
 					}
 				);
-				
+
 				if (response.status === 200) {
 					return true;
 				} else {
