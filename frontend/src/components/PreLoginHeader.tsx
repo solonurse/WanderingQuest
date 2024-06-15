@@ -5,7 +5,6 @@ import Login from "./Login";
 import useHandleSignIn from '@/hooks/useSignIn';
 
 const PreLoginHeader = () => {
-  useHandleSignIn;
 
   return (
     <div>

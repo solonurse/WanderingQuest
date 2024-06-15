@@ -9,7 +9,6 @@ import { userContext } from "@/context/UserContext";
 const Login = () => {
   const { status } = useSession();
   const user = useContext(userContext);
-  useHandleSignIn;
 
   if (status === 'loading') {
 		return <div>Loading...</div>;
