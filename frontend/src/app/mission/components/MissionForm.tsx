@@ -1,16 +1,15 @@
 import { useState } from "react";
 import { ImageLoaderProps } from "next/image";
-import useMissionData from "@/hooks/useMissionData";
+import useMissionDataInLocalStrage from "@/hooks/useMissionDataInLocalStrage";
 import useHandleSubmit from "../hooks/useHandleSubmit";
 import ImagePreview from "./ImagePreview";
 import SubmitButtons from "./SubmitButtons";
-import { MissionData } from "@/types/mission";
 
 const MissionForm = ({ type }: { type: string }) => {
-  const [missionData, setMissionData] = useState<MissionData | null>(null);
   const [comment, setComment] = useState("");
   const [prev, setPrev] = useState<string>('')
   const [missionPicture, setMissionPicture] = useState<File | null>(null);
+  const { missionData } = useMissionDataInLocalStrage();
 
   const missionPictureURL = ({ src, width, quality }: ImageLoaderProps) => {
     return `${src}?w=${width}&q=${quality || 75}`
@@ -24,8 +23,6 @@ const MissionForm = ({ type }: { type: string }) => {
       setMissionPicture(selectedFile);
     };
   };
-
-  useMissionData(setMissionData);
 
   const handleSubmit = useHandleSubmit({ type, missionData, comment, missionPicture });
 

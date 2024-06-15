@@ -7,13 +7,10 @@ import Image from "next/image";
 import PreLoginHeader from './PreLoginHeader'
 import PostLoginHeader from './PostLoginHeader';
 import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
-
 
 const Headers = () => {
   const { status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isLoggedOut, setIsLoggedOut] = useState(false);
 
   useEffect(() => {
     if (status === 'authenticated' && !isLoggedIn) {
@@ -21,13 +18,6 @@ const Headers = () => {
       setIsLoggedIn(true);
     }
   }, [status, isLoggedIn]);
-
-  useEffect(() => {
-    if (isLoggedOut) {
-      toast.info('ログアウトしています・・・', {autoClose: 1500});
-      setIsLoggedOut(false);
-    }
-  }, [isLoggedOut]);
 
   return (
     <header className="border-b flex items-center p-2 justify-between bg-lime-500 text-white">
@@ -38,7 +28,7 @@ const Headers = () => {
         </Link>
       </h1>
       {status === 'authenticated' ? (
-          <PostLoginHeader setIsLoggedOut={setIsLoggedOut} />
+          <PostLoginHeader />
         ) : (
           <PreLoginHeader />
         )

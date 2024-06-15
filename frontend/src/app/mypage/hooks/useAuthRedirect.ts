@@ -11,7 +11,7 @@ const useAuthRedirect = () => {
 
   useEffect(() => {
     if (status !== "loading" && user !== null) {
-      if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}`) {
+      if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}` || user.is_guest) {
         router.push('/');
       }
     }

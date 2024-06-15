@@ -1,13 +1,14 @@
 "use client";
 
+import { useContext } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useSession } from 'next-auth/react';
+import { userContext } from "@/context/UserContext";
 import Modal from "@/components/Modal";
 import Login from "@/components/Login";
 
 export default function Home() {
-  const { status } = useSession();
+  const user = useContext(userContext);
 
   return (
     <main className="flex min-h-screen bg-yellow-100 flex-col items-center justify-center p-24">
@@ -32,7 +33,7 @@ export default function Home() {
           <h3 className="text-xl">マイページでは、自分がクリアしたミッションを確認できます！</h3>
         </div>
       </div>
-      { status === 'authenticated' ? (
+      { user ? (
         <Link href={"/mission/createMission"} className="border rounded-lg text-xl text-slate-50 font-medium hover:font-extrabold p-4 mt-6 bg-green-300 hover:animate-heartbeat">
             ウォーキングを始めよう！！
         </Link>

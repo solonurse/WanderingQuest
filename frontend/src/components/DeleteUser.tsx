@@ -48,7 +48,7 @@ const DeleteUser = () => {
   if (session) {
     return (
       <div className='text-center'>
-        <button className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow' onClick={() => deleteConfirm()}>アカウントを削除する</button>
+        <button className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow-md active:shadow-sm' onClick={() => deleteConfirm()}>アカウントを削除</button>
       </div>
     )
   }
