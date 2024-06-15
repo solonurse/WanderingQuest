@@ -7,7 +7,3 @@ export interface User {
 export interface Account {
 	provider?: string;
 };
-
-export interface PostLoginHeaderProps {
-  setIsLoggedOut: React.Dispatch<React.SetStateAction<boolean>>;
-};

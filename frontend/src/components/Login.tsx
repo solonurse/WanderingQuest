@@ -1,20 +1,21 @@
 "use client";
 
-import React from 'react';
-import { useSession, signIn } from 'next-auth/react';
+import React, { useContext } from 'react';
+import { useSession } from 'next-auth/react';
 import Image from "next/image";
+import useHandleSignIn from '@/hooks/useHandleSignIn';
+import { userContext } from "@/context/UserContext";
 
 const Login = () => {
   const { status } = useSession();
-  const handleSignIn = async (provider: string) => {
-    await signIn(provider, {}, { prompt: 'login' });
-  }
+  const user = useContext(userContext);
+  const handleSignIn = useHandleSignIn();
 
   if (status === 'loading') {
 		return <div>Loading...</div>;
 	}
 
-  if (status !== 'authenticated') {
+  if (status !== 'authenticated' || user?.is_guest) {
     return (
       <div className="bg-lime-300 mb-8 p-10">
         <h1 className="text-4xl text-center mb-6">ユーザーログイン</h1>

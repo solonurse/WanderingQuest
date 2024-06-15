@@ -5,13 +5,13 @@ import Image from "next/image";
 import { MissionDataProps } from '@/types/mission';
 
 const Mission = ({ missionData }: MissionDataProps) => {
+  const startTime = new Date(missionData.startTime).getTime();
   const secondTime = missionData.timer * 60; // タイマーの初期値を秒単位で設定
   const [countTimer, setCountTimer] = useState(secondTime);
   const router = useRouter();
 
   useEffect(() => {
     const updateTimer = () => {
-      const startTime = new Date(missionData.startTime).getTime();
       const currentTime = new Date().getTime();
       const elapsedTime = Math.floor((currentTime - startTime) / 1000);
       const remainingTime = Math.max(secondTime - elapsedTime, 0);
@@ -26,7 +26,7 @@ const Mission = ({ missionData }: MissionDataProps) => {
     } else {
       router.push("/mission/missionFailed");
     }
-  }, [countTimer]);
+  }, [countTimer, startTime, secondTime, router]);
 
   // タイマーが5分を切ったらタイマーの色を赤色にする
   const timerClass = countTimer < 300 ? 'text-red-500' : 'text-black';

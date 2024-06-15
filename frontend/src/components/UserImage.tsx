@@ -46,8 +46,8 @@ const UserImage= () => {
   };
 
   return (
-    <div className="mb-5">
-      <div className="text-center text-xl font-medium">プロフィール写真</div>
+    <div>
+      <div className="text-center text-2xl font-bold">ユーザーアイコン</div>
       <div className="pt-2">
         {prev ?
           <Image loader={userAvatarURL} src={prev} alt="プレビュー画像" width={100} height={100} className="rounded-full mx-auto p-2 w-auto h-auto" /> :
@@ -56,7 +56,7 @@ const UserImage= () => {
       </div>
       <form onSubmit={handleSubmit} className="grid justify-items-center gap-3">
         <input type="file" onChange={handleFileChange} className="ms-20" />
-        <input type="submit" className='hover:bg-gray-100 text-red-500 py-2 px-4 border border-gray-400 rounded shadow mx-20' value="プロフィール写真を更新" />
+        <input type="submit" className='hover:bg-gray-100 text-gray-500 py-2 px-4 border border-gray-400 rounded shadow-md active:shadow-sm' value="ユーザーアイコンを更新" />
       </form>
     </div>
   );

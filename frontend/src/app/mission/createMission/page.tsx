@@ -9,6 +9,8 @@ import TimeLimit from "../components/TimeLimit";
 import { MissionData } from "@/types/mission";
 
 const CreateMission = () => {
+  const router = useRouter();
+
   const methods = useForm<MissionData>({
     defaultValues: {
       location: "",
@@ -16,8 +18,6 @@ const CreateMission = () => {
       timer: 60
     }
   });
-
-  const router = useRouter();
 
   const onSubmit = (data: MissionData) => {
     if (typeof window !== "undefined") {

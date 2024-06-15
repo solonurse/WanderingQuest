@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { MissionData } from "@/types/mission";
 
-const useMissionData = (setMissionData: React.Dispatch<React.SetStateAction<MissionData | null>>) => {
+const useMissionDataInLocalStrage = () => {
+  const [missionData, setMissionData] = useState<MissionData | null>(null);
   useEffect(() => {
     if (typeof window !== "undefined") {
       const missionDataInLocalStorage = localStorage.getItem("missionData");
@@ -9,6 +10,8 @@ const useMissionData = (setMissionData: React.Dispatch<React.SetStateAction<Miss
       setMissionData(missionData);
     }
   }, []);
+
+  return { missionData, setMissionData };
 };
 
-export default useMissionData;
+export default useMissionDataInLocalStrage;

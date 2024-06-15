@@ -1,15 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
 import Mission from "../components/Mission"
-import { MissionData } from '@/types/mission';
-import useMissionData from "@/hooks/useMissionData";
+import useMissionDataInLocalStrage from "@/hooks/useMissionDataInLocalStrage";
 
 const PlayingMission = () => {
-  const [missionData, setMissionData] = useState<MissionData | null>(null);
-
-  useMissionData(setMissionData);
+  const { missionData } = useMissionDataInLocalStrage();
 
   return (
     <div className="grid md:grid-cols-2 bg-yellow-100 h-auto pb-5">
