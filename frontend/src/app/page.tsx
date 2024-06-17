@@ -6,9 +6,12 @@ import Link from "next/link";
 import { userContext } from "@/context/UserContext";
 import Modal from "@/components/Modal";
 import Login from "@/components/Login";
+import useMissionDataInLocalStrage from "@/hooks/useMissionDataInLocalStrage";
 
 export default function Home() {
   const user = useContext(userContext);
+  const { missionData } = useMissionDataInLocalStrage();
+  const url = missionData ? "/mission/playingMission" : "/mission/createMission"
 
   return (
     <main className="flex min-h-screen bg-yellow-100 flex-col items-center justify-center p-24">
@@ -34,7 +37,7 @@ export default function Home() {
         </div>
       </div>
       { user ? (
-        <Link href={"/mission/createMission"} className="border rounded-lg text-xl text-slate-50 font-medium hover:font-extrabold p-4 mt-6 bg-green-300 hover:animate-heartbeat">
+        <Link href={`${url}`} className="border rounded-lg text-xl text-slate-50 font-medium hover:font-extrabold p-4 mt-6 bg-green-300 hover:animate-heartbeat">
             ウォーキングを始めよう！！
         </Link>
       ) : (

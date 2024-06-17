@@ -2,19 +2,26 @@ import React, { useContext } from "react";
 import { useSession } from 'next-auth/react';
 import Image, { ImageLoaderProps } from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import Modal from "./Modal";
 import Profile from "./Profile";
 import { userContext } from "@/context/UserContext";
-import useMissionDataInLocalStrage from "@/hooks/useMissionDataInLocalStrage";
 
 const PostLoginHeader = () => {
   const { status } = useSession();
   const user = useContext(userContext);
+  const route = useRouter();
   const userAvatarURL = ({ src, width, quality }: ImageLoaderProps)  => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
-  const { missionData } = useMissionDataInLocalStrage();
+  const handleWalkingSubmit = () => {
+    if (typeof window !== "undefined") {
+      const missionDataInLocalStorage = localStorage.getItem("missionData");
+      const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : null;
+      missionData ? route.push("/mission/playingMission") : route.push("/mission/createMission");
+    }
+  };
 
   if (status === 'authenticated') {
     return (
@@ -31,7 +38,7 @@ const PostLoginHeader = () => {
               <Profile />
             </Modal>
           </li>
-          { user?.is_guest ? null : (
+          { !user?.is_guest && (
             <li>
               <Link href={`/mypage/${user?.id}`} className="hover:font-extrabold">
                 マイページ
@@ -39,21 +46,9 @@ const PostLoginHeader = () => {
             </li>
           )}
         </ul>
-        {missionData ? (
-          <div className="flex">
-            <Link href="/mission/playingMission" className="flex gap-1 bg-purple-500 hover:bg-purple-600 text-white font-bold whitespace-nowrap border my-auto px-2 py-1 rounded-full shadow-md active:shadow-sm">
-              <Image src="/target.png" alt="ターゲット" width={24} height={24} className="w-auto h-auto" />
-              <div>挑戦中のミッション</div>
-            </Link>
-          </div>
-        ) : (
-          <div className="flex">
-            <Link href="/mission/createMission" className="flex gap-1 bg-orange-500 hover:bg-orange-600 text-white font-bold whitespace-nowrap border my-auto px-2 py-1 rounded-full shadow-md active:shadow-sm">
-              <Image src="/walking.png" alt="歩く人" width={16} height={16} className="w-auto h-auto" />
-              <div>ウォーキング開始</div>
-            </Link>
-          </div>
-        )}
+        <div className="flex ml-auto">
+          <button className="hover:font-extrabold" onClick={handleWalkingSubmit}>ウォーキングする</button>
+        </div>
       </div>
     );
   }
