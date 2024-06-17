@@ -1,7 +1,7 @@
 'use client'
 
 import Calendar from './components/Calendar';
-import WalkingButton from "./components/WalkingButton";
+import WalkingButton from "@/components/WalkingButton";
 import MissionRecord from "./components/MissionRecord";
 import useAuthRedirect from "../hooks/useAuthRedirect";
 import useFetchMissionData from "../hooks/useFetchMissionData";
@@ -27,7 +27,9 @@ const Mypage = () => {
           <div className="m-5">
             <Calendar missionRecords={missionRecords} />
           </div>
-          <WalkingButton />
+          <div className="flex justify-around text-lg xl:text-xl my-10">
+            <WalkingButton walkingButtonPadding='p-2' />
+          </div>
         </div>
         <MissionRecord missionRecords={missionRecords} />
       </div>
