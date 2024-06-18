@@ -1,27 +1,29 @@
-import React, { useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { useSession } from 'next-auth/react';
 import Image, { ImageLoaderProps } from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import Modal from "./Modal";
 import Profile from "./Profile";
 import { userContext } from "@/context/UserContext";
+import WalkingButton from "./WalkingButton";
 
 const PostLoginHeader = () => {
   const { status } = useSession();
   const user = useContext(userContext);
-  const route = useRouter();
+  const pathname = usePathname();
+  const [missionButton, setMissionButton] = useState(false);
   const userAvatarURL = ({ src, width, quality }: ImageLoaderProps)  => {
     return `${src}?w=${width}&q=${quality || 75}`;
   };
 
-  const handleWalkingSubmit = () => {
+  useEffect(() => {
     if (typeof window !== "undefined") {
       const missionDataInLocalStorage = localStorage.getItem("missionData");
       const missionData = missionDataInLocalStorage ? JSON.parse(missionDataInLocalStorage) : null;
-      missionData ? route.push("/mission/playingMission") : route.push("/mission/createMission");
+      missionData ? setMissionButton(true) : setMissionButton(false);
     }
-  };
+  }, [pathname]);
 
   if (status === 'authenticated') {
     return (
@@ -47,7 +49,7 @@ const PostLoginHeader = () => {
           )}
         </ul>
         <div className="flex ml-auto">
-          <button className="hover:font-extrabold" onClick={handleWalkingSubmit}>ウォーキングする</button>
+          { missionButton && <WalkingButton walkingButtonPadding={"px-2 p-1"} />}
         </div>
       </div>
     );
