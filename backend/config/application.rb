@@ -23,6 +23,14 @@ module Backend
     #
     config.time_zone = 'Tokyo'
 
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: false, # テストDBにレコードを作るfixtureの作成をスキップ
+        view_specs: false, # ビューファイル用のスペックを作成しない
+        helper_specs: false, # ヘルパーファイル用のスペックを作成しない
+        routing_specs: false # routes.rb用のスペックファイル作成しない
+    end
+
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Only loads a smaller set of middleware suitable for API only apps.
