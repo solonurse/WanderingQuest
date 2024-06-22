@@ -1,25 +1,28 @@
-import Link from "next/link";
+"use client";
+
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
+  const router = useRouter();
 
   return (
     <footer className="border py-4 bg-slate-50">
       <nav>
         <ul className="flex justify-center gap-8">
           <li>
-            <Link href="regulation/term" className="whitespace-pre-wrap">
+            <button onClick={() => router.push('/regulation/term')} className="whitespace-pre-wrap">
               利用規約
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/regulation/privacy" className="whitespace-pre-wrap">
+            <button onClick={() => router.push('/regulation/privacy')} className="whitespace-pre-wrap">
               プライバシーポリシー
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="/contact" className="whitespace-pre-wrap">
+            <button onClick={() => router.push('/contact')} className="whitespace-pre-wrap">
               お問い合わせ
-            </Link>
+            </button>
           </li>
         </ul>
       </nav>

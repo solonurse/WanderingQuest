@@ -43,7 +43,7 @@ const DeleteUser = () => {
     } else {
       return;
     }
-  }
+  };
 
   if (session) {
     return (
