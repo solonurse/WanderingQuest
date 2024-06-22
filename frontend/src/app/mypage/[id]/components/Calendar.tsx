@@ -3,9 +3,9 @@ import FullCalendar from '@fullcalendar/react';
 import { EventClickArg } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid'
 import interactionPlugin from '@fullcalendar/interaction';
-import { MissionRecordsProps } from "@/types/mission"
+import { MissionCalendar } from "@/types/mission"
 
-const Calendar: React.FC<MissionRecordsProps> = ({missionRecords}) => {
+const Calendar: React.FC<MissionCalendar> = ({missionRecords}) => {
   const events = missionRecords.map(record => ({
     id: record.id.toString(),
     title: record.title,

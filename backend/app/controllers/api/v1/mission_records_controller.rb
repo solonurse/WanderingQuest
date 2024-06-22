@@ -19,7 +19,16 @@ module Api
 
       def update
         mission_record = MissionRecord.find(params[:id]);
-        if mission_record.update(comment_params)
+        if mission_record.update!(comment_params)
+          head :ok
+        else
+          render json: { errors: mission_record.errors.full_messages }, status: :unprocessable_entity
+        end
+      end
+
+      def destroy
+        mission_record = MissionRecord.find(params[:id]);
+        if mission_record.destroy
           head :ok
         else
           render json: { errors: mission_record.errors.full_messages }, status: :unprocessable_entity

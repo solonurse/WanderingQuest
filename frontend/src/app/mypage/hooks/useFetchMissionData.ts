@@ -20,8 +20,7 @@ const useFetchMissionData = (userId: number | undefined) => {
       missionData();
     }
   }, [userId]);
-
-  return missionRecords;
+  return { missionRecords, setMissionRecords };
 };
 
 export default useFetchMissionData;

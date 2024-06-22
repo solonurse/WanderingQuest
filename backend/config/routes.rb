@@ -15,4 +15,5 @@ Rails.application.routes.draw do
   get '/mission_records/:id', to: 'api/v1/mission_records#index'
   post '/mission_records/:id', to: 'api/v1/mission_records#create'
   put '/mission_records/:id', to: 'api/v1/mission_records#update'
+  delete '/mission_records/:id', to: 'api/v1/mission_records#destroy'
 end

@@ -8,7 +8,7 @@ import useFetchMissionData from "../hooks/useFetchMissionData";
 
 const Mypage = () => {
   const { status, user, pathname } = useAuthRedirect();
-  const missionRecords = useFetchMissionData(user?.id);
+  const { missionRecords, setMissionRecords } = useFetchMissionData(user?.id);
 
     if (status === "loading") {
     return <p>Loading...</p>;
@@ -31,7 +31,7 @@ const Mypage = () => {
             <WalkingButton walkingButtonPadding='p-2' />
           </div>
         </div>
-        <MissionRecord missionRecords={missionRecords} />
+        <MissionRecord missionRecords={missionRecords} setMissionRecords={setMissionRecords} />
       </div>
     );
   }

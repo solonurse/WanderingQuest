@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { ImageLoaderProps } from "next/image";
 
 export interface MissionData {
@@ -34,12 +34,19 @@ export interface MissionRecordData {
   mission_picture: { url: string | null }
 };
 
+export interface MissionCalendar {
+  missionRecords: MissionRecordData[];
+}
+
 export interface MissionRecordsProps {
   missionRecords: MissionRecordData[];
+  setMissionRecords: Dispatch<SetStateAction<MissionRecordData[]>>;
 };
 
 export interface MissionRecordDataProps {
-  missionRecord: MissionRecordData
+  missionRecord: MissionRecordData;
+  missionRecords: MissionRecordData[];
+  setMissionRecords: Dispatch<SetStateAction<MissionRecordData[]>>;
 };
 
 export interface WalkingButtonClass {
