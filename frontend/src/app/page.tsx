@@ -16,7 +16,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen bg-yellow-100 flex-col items-center justify-center p-24">
       <div>
-        <Image src="/header.png" alt="トップ画像" width={1000} height={1000} sizes="100vw" priority className="h-auto" />
+        <Image src="/header.png" alt="トップ画像" width={1000} height={1000} priority className="h-auto w-auto" />
       </div>
       <div className="text-center my-14">
         <h1 className="text-4xl font-bold mb-3">WanderingQuestとは？</h1>
