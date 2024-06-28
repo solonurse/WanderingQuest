@@ -1,5 +1,5 @@
-import PlaceOptions from "@/constants/PlaceOptions";
 import { useFormContext } from "react-hook-form";
+import PlaceOptions from "@/constants/PlaceOptions";
 
 const PlaceMission = () => {
   const { register,  setValue, formState: { errors } } = useFormContext();
@@ -7,7 +7,7 @@ const PlaceMission = () => {
   const randomPlaceMission = () => {
     const randomIndex = Math.floor(Math.random() * PlaceOptions.length);
     const randomPlace = PlaceOptions[randomIndex];
-    setValue("location", randomPlace)
+    setValue("location", randomPlace);
   };
 
   return (
@@ -16,7 +16,9 @@ const PlaceMission = () => {
       <input
         type="text"
         id="location"
-        {...register("location", { required: "場所を入力してください。" })}
+        {...register("location", {
+          required: "場所を入力してください。",
+        })}
         className="p-2 border border-gray-300 rounded w-full text-center"
         placeholder="場所を入力"
       />
