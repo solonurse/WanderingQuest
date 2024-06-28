@@ -51,4 +51,4 @@ export interface MissionRecordDataProps {
 
 export interface WalkingButtonClass {
   walkingButtonPadding: string;
-  }
+  };

@@ -1,6 +1,6 @@
 const PrivacyPolicy = () => {
   return (
-    <article className="mx-auto my-5 w-9/12">
+    <div className="mx-auto my-5 w-9/12">
       <h1 className="text-4xl mb-3 text-center">プライバシーポリシー</h1>
       <p>WanderingQuest（以下，「当社」といいます。）は，本ウェブサイト上で提供するサービス（以下,「本サービス」といいます。）における，ユーザーの個人情報の取扱いについて，以下のとおりプライバシーポリシー（以下，「本ポリシー」といいます。）を定めます。</p>
       <h2 className="text-2xl">第1条（個人情報）</h2>
@@ -71,7 +71,7 @@ const PrivacyPolicy = () => {
       <h2 className="text-2xl">第9条（プライバシーポリシーの変更）</h2>
       <p>本ポリシーの内容は，法令その他本ポリシーに別段の定めのある事項を除いて，ユーザーに通知することなく，変更することができるものとします。</p>
       <p>当社が別途定める場合を除いて，変更後のプライバシーポリシーは，本ウェブサイトに掲載したときから効力を生じるものとします。</p>
-    </article>
+    </div>
   )
 }
 
