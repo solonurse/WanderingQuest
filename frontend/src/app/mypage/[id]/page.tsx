@@ -10,11 +10,7 @@ const Mypage = () => {
   const { status, user, pathname } = useAuthRedirect();
   const { missionRecords, setMissionRecords } = useFetchMissionData(user?.id);
 
-    if (status === "loading") {
-    return <p>Loading...</p>;
-  }
-
-    // リダイレクト条件を満たしている場合、nullを返して何もレンダリングしない
+  // リダイレクト条件を満たしている場合、nullを返して何もレンダリングしない
   if (status === "unauthenticated" || pathname !== `/mypage/${user?.id}`) {
     return null;
   }
