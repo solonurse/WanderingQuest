@@ -6,6 +6,7 @@ import Footer from "@/components/Footer";
 import NextAuthProvider from '@/providers/NextAuth';
 import ToastProvider from '@/context/ToastProvider';
 import { UserContextProvider } from "@/context/UserContext";
+import Loading from "@/context/LoadingContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,15 +23,17 @@ export default function RootLayout({
   return (
     <NextAuthProvider>
       <UserContextProvider>
-        <html lang="ja">
-          <body className="flex flex-col">
-            <ToastProvider>
-              <Headers />
-              {children}
-              <Footer />
-            </ToastProvider>
-          </body>
-        </html>
+          <html lang="ja">
+            <body className="flex flex-col">
+              <Loading>
+                <ToastProvider>
+                  <Headers />
+                  {children}
+                  <Footer />
+                </ToastProvider>
+              </Loading>
+            </body>
+          </html>
       </UserContextProvider>
     </NextAuthProvider>
   );

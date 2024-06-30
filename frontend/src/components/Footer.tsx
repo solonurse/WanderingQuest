@@ -8,17 +8,17 @@ const Footer = () => {
     <footer className="border py-4 bg-slate-50">
       <ul className="flex justify-center gap-8">
         <li>
-          <Link href="../regulation/term" className="whitespace-pre-wrap">
+          <Link href="/regulation/term" className="whitespace-pre-wrap">
             利用規約
           </Link>
         </li>
         <li>
-          <Link href="../regulation/privacy" className="whitespace-pre-wrap">
+          <Link href="/regulation/privacy" className="whitespace-pre-wrap">
             プライバシーポリシー
           </Link>
         </li>
         <li>
-          <Link href="../contact" className="whitespace-pre-wrap">
+          <Link href="/contact" className="whitespace-pre-wrap">
             お問い合わせ
           </Link>
         </li>

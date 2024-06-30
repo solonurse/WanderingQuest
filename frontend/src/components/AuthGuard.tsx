@@ -15,10 +15,6 @@ const AuthGuard = ({ children }: { children: React.ReactNode }) => {
     }
   }, [router, status, pathName, user?.id]);
 
-  if (status === "loading") {
-    return <p>Loading...</p>;
-  }
-
   if (status === "authenticated") {
     return <>{children}</>;
   }
