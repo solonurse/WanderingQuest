@@ -13,6 +13,9 @@ const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
   title: "WanderingQuest",
   description: "WanderingQuestはウォーキングアプリです。",
+  openGraph: {
+    images: "/header.png"
+  },
 };
 
 export default function RootLayout({
