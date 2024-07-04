@@ -12,15 +12,18 @@ import Loading from "@/context/LoadingContext";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://wandering-quest.vercel.app/"),
   title: "WanderingQuest",
-  description: "WanderingQuestはウォーキングアプリです。",
-  openGraph: {
-    type: "website",
-    locale: "ja_JP",
-    url: "https://wandering-quest.vercel.app/",
-    siteName: "Wandering Quest",
-    images: ["https://wandering-quest.vercel.app/header.png"],
-  },
+  description: "ゲーム感覚でウォーキングを楽しめるミッションを提供するウォーキングアプリです。",
+	openGraph: {
+		title: 'WanderingQuest',
+		description: 'ゲーム感覚でウォーキングを楽しめるミッションを提供するウォーキングアプリです。',
+	},
+	twitter: {
+		title: 'WanderingQuest',
+		description: 'ゲーム感覚でウォーキングを楽しめるミッションを提供するウォーキングアプリです。',
+		card: 'summary_large_image',
+	},
 };
 
 export default function RootLayout({
