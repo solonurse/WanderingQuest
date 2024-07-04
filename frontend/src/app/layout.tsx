@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Analytics } from '@vercel/analytics/react';
 import Headers from "@/components/Header";
 import Footer from "@/components/Footer";
 import NextAuthProvider from '@/providers/NextAuth';
@@ -14,7 +15,11 @@ export const metadata: Metadata = {
   title: "WanderingQuest",
   description: "WanderingQuestはウォーキングアプリです。",
   openGraph: {
-    images: "/header.png"
+    type: "website",
+    locale: "ja_JP",
+    url: "https://wandering-quest.vercel.app/",
+    siteName: "Wandering Quest",
+    images: ["https://wandering-quest.vercel.app/header.png"],
   },
 };
 
@@ -35,6 +40,7 @@ export default function RootLayout({
                   <Footer />
                 </ToastProvider>
               </Loading>
+              <Analytics />
             </body>
           </html>
       </UserContextProvider>
